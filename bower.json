@@ -1,6 +1,7 @@
 {
   "name": "carfindr",
   "version": "0.0.0",
+  "componentsDirectory": "public/components",
   "authors": [
     "Rsbowers <rob.bowers@gmail.com>"
   ],
