@@ -1,0 +1,37 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/polymer-ajax/polymer-ajax.html">
+
+<polymer-element name="polymer-makeListing"  attributes="layout">
+  
+  <template>
+    
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../styles/makeListing.css">
+
+    <polymer-ajax auto url="https://api.edmunds.com/api/vehicle/v2/makes?state=new&year=2014&view=basic&fmt=json&api_key=5np6hn9mtzh3dbjyz5vtrpwe" handleAs="json" response="{{vehicles}}" on-polymer-response="{{handleResponse}}"></polymer-ajax>
+
+    <template bind if="{{vehicles}}">
+      
+      <template if="{{showSelect}}">
+        <select id="makeDropdown" selectedIndex="{{currentIndex}}" on-change="{{onDropdownChanged}}">
+        <template repeat="{{vehicle in vehicles.makes}}">
+          <option value="{{vehicle.niceName}}">{{vehicle.name}}</option>
+        </template>
+        </select>
+      </template>
+
+      <template if="{{showRows}}">
+        <ul class="nav nav-sidebar">
+          <template repeat="{{vehicle in vehicles.makes}}">
+            <li><a href="/make/{{vehicle.niceName}}/" data-id="{{vehicle.id}}" class="makeNav-item">{{vehicle.name}}</a></li>
+          </template>
+        </ul>
+      </template>
+
+    </template>
+
+  </template>
+
+  <script src="../js/makeListing.js"></script>
+
+</polymer-element>

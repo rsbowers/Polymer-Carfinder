@@ -1,0 +1,22 @@
+<link rel="import" href="../components/polymer/polymer.html">
+
+<polymer-element name="polymer-breadCrumb"  attributes="links">
+  
+  <template>
+
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../styles/breadCrumb.css">
+
+    <template bind if="{{links}}">
+      <ol class="breadcrumb">
+        <template repeat="{{link in links}}">
+          <li><a href="{{link.url}}" class="{{link.className}}">{{link.title}}</a></li>
+        </template>
+      </ol>
+    </template>
+
+  </template>
+
+  <script src="../js/breadCrumb.js"></script>
+
+</polymer-element>

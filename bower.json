@@ -1,0 +1,21 @@
+{
+  "name": "carfindr",
+  "version": "0.0.0",
+  "authors": [
+    "Rsbowers <rob.bowers@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "~0.2.2",
+    "polymer-elements": "Polymer/polymer-elements#~0.2.2",
+    "polymer-ui-elements": "Polymer/polymer-ui-elements#~0.2.2"
+  }
+}

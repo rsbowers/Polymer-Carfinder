@@ -1,0 +1,82 @@
+<link rel="import" href="../components/polymer/polymer.html">
+<link rel="import" href="../components/polymer-ajax/polymer-ajax.html">
+<link rel="import" href="../components/polymer-ui-card/polymer-ui-card.html">
+<link rel="import" href="../components/polymer-ui-accordion/polymer-ui-accordion.html">
+<link rel="import" href="../elements/vehicleMedia.html">
+
+<polymer-element name="polymer-vehicleDetail"  attributes="vehicleID">
+  
+  <template>
+    
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../styles/vehicleDetail.css">
+
+    <polymer-ajax auto url="https://api.edmunds.com/api/vehicle/v2/styles/{{vehicleID}}?view=full&fmt=json&api_key=5np6hn9mtzh3dbjyz5vtrpwe" handleAs="json" response="{{vehicle}}" on-polymer-response="{{handleResponse}}"></polymer-ajax>
+
+    <template bind if="{{vehicle}}">
+        
+      <div class="clearfix">
+        <div class="pull-right">
+          <polymer-vehicleMedia vehicleID="{{vehicleID}}"></polymer-vehicleMedia>
+        </div>
+        <div>
+          <h1>{{vehicle.year.year}} {{vehicle.make.name}} {{vehicle.model.name}}</h1>
+          <dl class="dl-horizontal">
+            <dt>Engine</dt>
+            <dd>{{vehicle.engine.name}}</dd>
+            <dt>Drivetrain</dt>
+            <dd>{{vehicle.drivenWheels}}</dd>
+            <dt>Transmission</dt>
+            <dd>{{vehicle.transmission.numberOfSpeeds}} Speed {{vehicle.transmission.transmissionType}}</dd>
+            <dt>Horse Power</dt>
+            <dd>{{vehicle.engine.horsepower}} hp</dd>
+            <dt>Fuel Economy</dt>
+            <dd>{{vehicle.MPG.city}} / {{vehicle.MPG.highway}}</dd>
+          </dl>
+        </div>
+      </div>
+
+      <template bind if="{{showColors}}">
+          <section>&nbsp;</section>
+          <h4>Colors</h4>
+          <polymer-ui-accordion>
+          <template repeat="{{colors in vehicle.colors}}">
+            <polymer-ui-collapsible>
+              <div class="polymer-ui-collapsible-header">{{colors.category}} Colors</div>
+              <div>
+                <template repeat="{{color in colors.options}}">
+                  <div class="colorChipWrapper">
+                    <div class="colorChip" style="background-color:rgb({{color.colorChips.primary.r}},{{color.colorChips.primary.g}},{{color.colorChips.primary.b}})"></div>
+                    <div class="colorChipText"><small>{{color.name}}</small></div>
+                  </div>
+                </template>
+              </div>
+            <polymer-ui-collapsible>
+          </template>
+          </polymer-ui-accordion>
+      </template>
+
+      <template bind if="{{showOptions}}">
+          <section>&nbsp;</section>
+          <h4>Options</h4>
+          <polymer-ui-accordion>
+          <template repeat="{{options in vehicle.options}}">
+            <polymer-ui-collapsible>
+              <div class="polymer-ui-collapsible-header">{{options.category}}</div>
+              <ul class="list-group">
+                <template repeat="{{option in options.options}}">
+                  <li class="list-group-item">{{option.name}}</li>
+                </template>
+              </ul>
+            </polymer-ui-collapsible>
+          </template>
+          </polymer-ui-accordion>
+      </template>
+
+    </template>
+
+  </template>
+  
+  <script src="../js/vehicleDetail.js"></script>
+
+</polymer-element>

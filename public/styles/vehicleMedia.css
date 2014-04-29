@@ -1,0 +1,11 @@
+.vehiclePhotoWrapper {
+  margin: 0 20px 20px 0;
+  width:500px;
+  height:333px;
+  overflow:hidden;
+  background-color:#f5f5f5;
+}
+
+.vehiclePhoto {
+  width:500px;
+}
