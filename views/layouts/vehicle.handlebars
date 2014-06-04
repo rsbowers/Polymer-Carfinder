@@ -34,37 +34,23 @@
                 </button>
                 <a class="navbar-brand" href="#">CarFinder</a>
             </div>
-            <!--
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Dashboard</a></li>
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Profile</a></li>
-                    <li><a href="#">Help</a></li>
-                </ul>
                 <form class="navbar-form navbar-right">
-                    <input type="text" class="form-control" placeholder="Search...">
+                    <polymer-makeListing layout="select" listen="false"></polymer-makeListing>
                 </form>
             </div>
-            -->
         </div>
     </div>
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <polymer-makeListing layout="list"></polymer-makeListing>
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-                <polymer-breadCrumb></polymer-breadCrumb>
+            <div class="col-sm-12 col-md-12 main">
                 {{{body}}}
             </div>  
         </div>
     </div>
     
     <script src="components/platform/platform.js"></script>
-    <!--<script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>-->
 
 </body>
 </html>

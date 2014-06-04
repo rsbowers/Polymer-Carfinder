@@ -14,9 +14,14 @@ Polymer('polymer-makeListing', {
 
   // select list change handler
   onDropdownChanged: function(e,d,t) {
+    console.log(this.listen);
     var index = e.path[0].selectedIndex;
     var make = this.vehicles.makes[index];
-    this.fire('make-slection', {make: make.name});
+    if(this.listen == 'true') {
+      this.fire('make-slection', {make: make.name});
+    } else {
+      window.location = '/make/'+make.name;
+    }
   },
   
   // instance of the element is created

@@ -1,19 +1,19 @@
 /* GET home page. */
 exports.index = function(req, res){
-  res.render('home', { layout: 'home', title: 'Express' });
+  res.render('home', { layout: 'home', title: 'Home' });
 };
 
 exports.modelListing = function(req, res){
   console.log(req.params);
-  res.render('modelListing', { title: 'Express', make: req.params.makeID });
+  res.render('modelListing', { title: 'Model Listing', make: req.params.makeID });
 };
 
 exports.vehicleListing = function(req, res){
   console.log(req.params);
-  res.render('vehicleListing', { title: 'Express', make: req.params.makeID, model: req.params.modelID,  });
+  res.render('vehicleListing', { title: 'Vehicle Listing', make: req.params.makeID, model: req.params.modelID,  });
 };
 
 exports.vehicleDetail = function(req, res){
   console.log(req.params);
-  res.render('vehicleDetail', { title: 'Express', vehicleID: req.params.vehicleID });
+  res.render('vehicleDetail', { layout: 'vehicle', title: 'Vehicle Detail', vehicleID: req.params.vehicleID });
 };
